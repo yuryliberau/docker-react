@@ -10,4 +10,4 @@ before_install:
 # run our test suite. If any of these commands return status code other then 0, Travis CI will assume
 # that our build failed, our our test suite failed
 script:
-  - docker run yuryliberau/docker-react npm run test --forceExit # -- --coverage it will exit after test
+  - docker run -e CI=true yuryliberau/docker-react npm run test  # -- --coverage it will exit after test
