@@ -1,0 +1,13 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  # we could tag it just IMAGE etc, because the tag that is going to be applyied hre
+  # will only be used inside of Travis CI process
+  - docker build -t yuryliberau/docker-react -f Dockerfile.dev .
+# this section is supposed to contain all the different commands that need to be executed to actually
+# run our test suite. If any of these commands return status code other then 0, Travis CI will assume
+# that our build failed, our our test suite failed
+script:
+  - docker run yuryliberau/docker-react npm run test -- --coverage # -- --coverage it will exit after test
